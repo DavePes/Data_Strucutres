@@ -7,8 +7,7 @@ You are given a test program (`ab_experiment`) which is used to evaluate your
 implementation of the previous assignment. The test program auguments your implementation
 by implementing a `remove` method and it performs the following experiments:
 
-- _Insert test:_ Insert _n_ elements sequentially and then repeatedly
-  find them all in sequential order.
+- _Insert test:_ Insert _n_ elements in random order.
 - _Min test:_ Insert _n_ elements sequentially and then _n_ times repeat: remove the minimal
   element in the tree and then insert it back.
 - _Random test:_ Insert _n_ elements sequentially and then _n_ times repeat: remove random
