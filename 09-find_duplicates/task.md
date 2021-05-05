@@ -20,3 +20,6 @@ uniquely determined by some its substring or similar properties of the input
 will not be accepted.
 
 As usual, you should submit only the `find_duplicates.{h,py}` file.
+
+Note that due to the space constraints of the Python solutions, tests `10M` and `16M` are
+not used and are always considered successful by ReCodEx.
