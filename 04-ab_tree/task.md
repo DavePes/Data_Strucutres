@@ -11,3 +11,5 @@ Chapter 3](http://mj.ucw.cz/vyuka/dsnotes/03-abtree.pdf) where the actual values
 stored also in the internal nodes of the tree and not only in leaves.
 
 You should submit the `ab_tree.*` file (but not `ab_tree_test.*` files).
+
+Source code templates can be found in [git](https://gitlab.kam.mff.cuni.cz/datovky/assignments/-/tree/master).
