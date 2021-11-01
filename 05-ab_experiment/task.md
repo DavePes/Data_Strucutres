@@ -79,3 +79,6 @@ It should be always clear which is which:
 - Theoretical facts (i.e., claims we have proved mathematically)
 - Your hypotheses (e.g., when you claim that the graph looks like something is true,
   but you are not able to prove rigorously that it always holds)
+
+
+Source code templates can be found in [git](https://gitlab.kam.mff.cuni.cz/datovky/assignments/-/tree/master).
