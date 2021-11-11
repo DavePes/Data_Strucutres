@@ -21,6 +21,6 @@ matrix_experiment_real: matrix_transpose.h matrix_tests.h matrix_experiment_real
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) matrix_experiment_real.cpp -o $@
 
 .PHONY: clean
-clean:
+clean::
 	rm -f matrix_experiment_sim matrix_experiment_real
 	rm -rf out

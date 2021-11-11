@@ -29,10 +29,10 @@ proper points will be assigned later.
 
 The test program is given two arguments:
 - Cache type:
-    - `m1024b16` – cache of 1024 items organized in 16-item blocks
-    - `m8192b64` – cache of 8192 items organized in 64-item blocks
-    - `m65536b256` – cache of 65536 items organized on 256-item blocks
-    - `m65536b4096` – cache of 65536 items organized in 4096-item blocks
+    - `m1024-b16` – cache of 1024 items organized in 16-item blocks
+    - `m8192-b64` – cache of 8192 items organized in 64-item blocks
+    - `m65536-b256` – cache of 65536 items organized on 256-item blocks
+    - `m65536-b4096` – cache of 65536 items organized in 4096-item blocks
 - The implementation to test (`smart` or `naive`).
 
 The output of the program contains one line per experiment, which consists of

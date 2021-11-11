@@ -5,7 +5,7 @@
 #include <cmath>
 #include <iostream>
 
-#include <time.h>   // FIXME
+#include <time.h>
 
 using namespace std;
 

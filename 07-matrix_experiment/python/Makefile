@@ -13,5 +13,5 @@ out/t-sim-%-smart:
 	./matrix_experiment_sim.py $* smart >$@
 
 .PHONY: clean
-clean:
-	rm -rf out
+clean::
+	rm -rf out __pycache__
