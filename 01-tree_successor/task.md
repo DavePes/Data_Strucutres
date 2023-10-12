@@ -15,3 +15,8 @@ You should submit the file `tree_successor.*` (but not the
 `tree_successor_test.*`).
 
 Source code templates can be found in [the git repository](https://gitlab.kam.mff.cuni.cz/datovky/assignments/-/tree/master).
+
+Files tree_successor_more_tests.{cpp,py} contain additional tests
+for bugs discovered in students' solutions during this semester.
+They are not included on recodex, but your program should pass them 
+in few seconds.
