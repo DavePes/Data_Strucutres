@@ -10,3 +10,8 @@ You should submit the `splay_operation.*` file (but not the
 `splay_operation_test.*`).
 
 Source code templates can be found in [the git repository](https://gitlab.kam.mff.cuni.cz/datovky/assignments/-/tree/master).
+
+Files splay_operation_more_tests.{cpp,py} contain additional tests
+for bugs discovered in students' solutions during this semester.
+They are not included on recodex, but your program should pass them 
+in few seconds.
