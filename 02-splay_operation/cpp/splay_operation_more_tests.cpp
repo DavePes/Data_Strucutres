@@ -199,6 +199,16 @@ void test_remove() {
         for (int i = 1; i < elements; i++)
             tree.remove(0);
     }
+    {
+        Node *node = nullptr;
+        for (int i = 1; i < elements; i++)
+            node = new Node(i, nullptr, node, nullptr);
+        node = new Node(0, nullptr, nullptr, node);
+        Tree tree(node);
+
+        for (int i = 1; i < elements; i++)
+            tree.remove(i);
+    }
 }
 
 vector<pair<string, function<void()>>> tests = {

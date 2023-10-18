@@ -141,6 +141,14 @@ def test_remove():
     for elem in range(elements):
         tree.remove(0)
 
+    node = None
+    for i in range(1, elements):
+        node = Node(i, None, node, None)
+    node = Node(0, None, None, node)
+    tree = Tree(node)
+    for i in range(1, elements):
+        tree.remove(i)
+
 tests = [
     ("splay", test_splay),
     ("lookup", test_lookup),
