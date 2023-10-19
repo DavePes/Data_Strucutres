@@ -97,7 +97,7 @@ def test_insert():
     assert flatten(tree) == sorted(sequence), "Incorrect tree after a sequence of inserts"
 
     # Test speed
-    elements = 200000
+    elements = 200000 # Must be even!
     tree = Tree()
     for elem in range(elements):
         for _ in range(10):
@@ -141,13 +141,14 @@ def test_remove():
     for elem in range(elements):
         tree.remove(0)
 
-    node = None
-    for i in range(1, elements):
-        node = Node(i, None, node, None)
-    node = Node(0, None, None, node)
+    left_subtree = right_subtree = None
+    for i in reversed(range(0, elements//2)):
+        left_subtree = Node(i, right=left_subtree)
+        right_subtree = Node(elements-i, left=right_subtree)
+    node = Node(elements//2, left=left_subtree, right=right_subtree)
     tree = Tree(node)
-    for i in range(1, elements):
-        tree.remove(i)
+    while tree.root is not None:
+        tree.remove(tree.root.key)
 
 tests = [
     ("splay", test_splay),

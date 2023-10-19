@@ -107,7 +107,7 @@ class TestSplay {
     }
 };
 
-const int elements = 5000000;
+const int elements = 5000000; // Must be even!
 
 void test_lookup() {
     // Insert even numbers
@@ -200,14 +200,16 @@ void test_remove() {
             tree.remove(0);
     }
     {
-        Node *node = nullptr;
-        for (int i = 1; i < elements; i++)
-            node = new Node(i, nullptr, node, nullptr);
-        node = new Node(0, nullptr, nullptr, node);
-        Tree tree(node);
+        Node *left_subtree = nullptr, *right_subtree = nullptr;
+        for (int i = elements/2-1; i >= 0; i--) {
+            left_subtree = new Node(i, nullptr, nullptr, left_subtree);
+            right_subtree = new Node(elements-i, nullptr, right_subtree, nullptr);
+        }
+        Node *root = new Node(elements/2, nullptr, left_subtree, right_subtree);
+        Tree tree(root);
 
-        for (int i = 1; i < elements; i++)
-            tree.remove(i);
+        while(tree.root)
+            tree.remove(tree.root->key);
     }
 }
 
