@@ -107,19 +107,21 @@ class TestSplay {
     }
 };
 
+const int elements = 5000000; // Must be even!
+
 void test_lookup() {
     // Insert even numbers
     Tree tree;
-    for (int i = 0; i < 5000000; i += 2)
+    for (int i = 0; i < elements; i += 2)
         tree.insert(i);
 
     // Find non-existing
-    for (int i = 1; i < 5000000; i += 2)
+    for (int i = 1; i < elements; i += 2)
         for (int j = 0; j < 10; j++)
             EXPECT(!tree.lookup(i), "Non-existing element was found");
 
     // Find existing
-    for (int i = 0; i < 5000000; i += 2)
+    for (int i = 0; i < elements; i += 2)
         for (int j = 0; j < 10; j++)
             EXPECT(tree.lookup(i), "Existing element was not found");
 }
@@ -142,15 +144,17 @@ void test_insert() {
     // Test speed
     {
         Tree tree;
-        for (int i = 0; i < 5000000; i++)
+        for (int i = 0; i < elements; i++)
             for (int j = 0; j < 10; j++)
                 tree.insert(i);
     }
 
     {
         Tree tree;
-        for (int i = 5000000; i >= 0; i--)
+        for (int i = elements; i >= 0; i--)
             tree.insert(i);
+        for (int i = 0; i < elements; i++)
+            tree.insert(elements);
     }
 }
 
@@ -175,18 +179,37 @@ void test_remove() {
     // Test speed
     {
         Tree tree;
-        for (int i = 0; i < 5000000; i++)
+        for (int i = 0; i < elements; i++)
             tree.insert(i);
 
         // Non-existing elements
-        for (int i = 1; i < 5000000; i += 2)
+        for (int i = 1; i < elements; i += 2)
             for (int j = 0; j < 10; j++)
                 tree.remove(i);
 
         // Existing elements
-        for (int i = 2; i < 5000000; i += 2)
+        for (int i = 2; i < elements; i += 2)
             for (int j = 0; j < 10; j++)
                 tree.remove(i);
+    }
+    {
+        Tree tree;
+        for (int i = 1; i < elements; i++)
+            tree.insert(i);
+        for (int i = 1; i < elements; i++)
+            tree.remove(0);
+    }
+    {
+        Node *left_subtree = nullptr, *right_subtree = nullptr;
+        for (int i = elements/2-1; i >= 0; i--) {
+            left_subtree = new Node(i, nullptr, nullptr, left_subtree);
+            right_subtree = new Node(elements-i, nullptr, right_subtree, nullptr);
+        }
+        Node *root = new Node(elements/2, nullptr, left_subtree, right_subtree);
+        Tree tree(root);
+
+        while(tree.root)
+            tree.remove(tree.root->key);
     }
 }
 

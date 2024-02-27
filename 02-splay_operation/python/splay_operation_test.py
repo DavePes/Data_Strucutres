@@ -97,14 +97,17 @@ def test_insert():
     assert flatten(tree) == sorted(sequence), "Incorrect tree after a sequence of inserts"
 
     # Test speed
+    elements = 200000 # Must be even!
     tree = Tree()
-    for elem in range(200000):
+    for elem in range(elements):
         for _ in range(10):
             tree.insert(elem)
 
     tree = Tree()
-    for elem in reversed(range(200000)):
+    for elem in reversed(range(elements)):
         tree.insert(elem)
+    for elem in range(elements):
+        tree.insert(elements)
 
 def test_remove():
     # Test validity first
@@ -118,18 +121,34 @@ def test_remove():
     assert flatten(tree) == sorted(sequence), "Incorrect tree after a sequence of removes"
 
     # Test speed
+    elements = 200000
     tree = Tree()
-    for elem in range(0, 100000, 2):
+    for elem in range(0, elements, 2):
         tree.insert(elem)
 
     # Non-existing elements
-    for elem in range(1, 100000, 2):
+    for elem in range(1, elements, 2):
         for _ in range(10):
             tree.remove(elem)
 
     # Existing elements
-    for elem in range(2, 100000, 2):
+    for elem in range(2, elements, 2):
         tree.remove(elem)
+
+    tree = Tree()
+    for elem in range(1, elements):
+        tree.insert(elem)
+    for elem in range(elements):
+        tree.remove(0)
+
+    left_subtree = right_subtree = None
+    for i in reversed(range(0, elements//2)):
+        left_subtree = Node(i, right=left_subtree)
+        right_subtree = Node(elements-i, left=right_subtree)
+    node = Node(elements//2, left=left_subtree, right=right_subtree)
+    tree = Tree(node)
+    while tree.root is not None:
+        tree.remove(tree.root.key)
 
 tests = [
     ("splay", test_splay),
